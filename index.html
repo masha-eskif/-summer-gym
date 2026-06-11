@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f1117" />
+  <title>Летняя программа · масса + сушка</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <h1 id="appTitle">💪 Летняя программа</h1>
+      <p id="appSubtitle" class="subtitle"></p>
+    </div>
+  </header>
+
+  <nav class="tabs wrap" id="mainTabs">
+    <button class="tab active" data-view="program">Программа</button>
+    <button class="tab" data-view="anketa">Анкета</button>
+    <button class="tab" data-view="info">Прогрессия &amp; питание</button>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- ============ ПРОГРАММА ============ -->
+    <section id="view-program" class="view active">
+      <div class="datebar card">
+        <label>Дата тренировки:
+          <input type="date" id="trainDate" />
+        </label>
+        <button id="resetDay" class="btn ghost small">Сбросить день</button>
+      </div>
+
+      <div class="schedule card" id="scheduleStrip"></div>
+
+      <div class="daytabs" id="dayTabs"></div>
+
+      <div class="progress-wrap card">
+        <div class="progress-head">
+          <span id="dayProgressLabel">Прогресс дня</span>
+          <span id="dayProgressPct">0%</span>
+        </div>
+        <div class="bar"><div class="bar-fill" id="dayProgressBar"></div></div>
+      </div>
+
+      <div id="dayContent"></div>
+    </section>
+
+    <!-- ============ АНКЕТА ============ -->
+    <section id="view-anketa" class="view">
+      <div class="card">
+        <h2>Анкета уровня</h2>
+        <p class="muted">Заполни — посчитаю твой уровень и дам рекомендации. Можно перепройти в конце лета и сравнить.</p>
+
+        <form id="anketaForm" class="anketa">
+          <label>Отжимания от пола за подход (макс)
+            <input type="number" name="pushups" min="0" placeholder="например, 25" />
+          </label>
+          <label>Приседания без веса за подход (макс)
+            <input type="number" name="squats" min="0" placeholder="например, 40" />
+          </label>
+          <label>Подтягивания за подход (макс)
+            <input type="number" name="pullups" min="0" placeholder="например, 3" />
+          </label>
+          <label>Планка (секунд, макс)
+            <input type="number" name="plank" min="0" placeholder="например, 60" />
+          </label>
+          <label>Вес тела, кг (необязательно)
+            <input type="number" name="weight" min="0" placeholder="например, 75" />
+          </label>
+
+          <fieldset>
+            <legend>Что любишь больше (получит больше объёма)</legend>
+            <label class="chk"><input type="checkbox" name="like" value="Руки"> Руки</label>
+            <label class="chk"><input type="checkbox" name="like" value="Грудь"> Грудь</label>
+            <label class="chk"><input type="checkbox" name="like" value="Спина"> Спина</label>
+            <label class="chk"><input type="checkbox" name="like" value="Ноги"> Ноги</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Что не любишь / бережём</legend>
+            <label class="chk"><input type="checkbox" name="dislike" value="Приседания"> Приседания</label>
+            <label class="chk"><input type="checkbox" name="dislike" value="Становая"> Становая</label>
+            <label class="chk"><input type="checkbox" name="dislike" value="Колени"> Колени</label>
+            <label class="chk"><input type="checkbox" name="dislike" value="Плечи"> Плечи</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Посчитать уровень</button>
+        </form>
+      </div>
+
+      <div id="anketaResult" class="card result hidden"></div>
+    </section>
+
+    <!-- ============ ИНФО ============ -->
+    <section id="view-info" class="view">
+      <div class="card">
+        <h2>Прогрессия на лето</h2>
+        <div id="progressionList" class="timeline"></div>
+      </div>
+      <div class="card">
+        <h2>Питание (без весов, по логике)</h2>
+        <div id="nutritionList" class="nutri"></div>
+      </div>
+      <p class="muted note" id="metaNote"></p>
+    </section>
+
+  </main>
+
+  <footer class="wrap muted">
+    <p>Прогресс хранится локально в браузере (этого устройства). Тренируйся с умом, разминайся, слушай тело. 🏋️</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
